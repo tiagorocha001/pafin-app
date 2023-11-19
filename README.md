@@ -1,4 +1,7 @@
-# Mantine Vite template
+# Deployed URL
+[https://655a7d816c80cf0008a177db--sensational-ganache-bf8e8a.netlify.app/](https://655a7d816c80cf0008a177db--sensational-ganache-bf8e8a.netlify.app/)
+
+Deployment process done on netlify.
 
 ### Install dependencies: 
 ´npm i´
