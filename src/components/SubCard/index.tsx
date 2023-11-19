@@ -1,10 +1,16 @@
 import { Flex, Button } from "@mantine/core";
-import { CheckCircle, ArrowRight, CircleDashed } from "@phosphor-icons/react";
+import {
+  CheckCircle,
+  ArrowRight,
+  CircleDashed,
+  Info,
+} from "@phosphor-icons/react";
 import styles from "./style.module.css";
 
 export interface SubCardProps {
   title: string;
   alert: string;
+  alertSecondary?: string;
   description: string;
   active: boolean;
   button: string;
@@ -14,13 +20,14 @@ export interface SubCardProps {
 export const SubCard = ({
   title,
   alert,
+  alertSecondary,
   description,
   active,
   button,
   completed,
 }: SubCardProps) => {
   return (
-    <div className={styles.container} style={{ opacity: active ? 1 : 0.5 }}>
+    <div className={active ? styles.container : styles.containerInactive}>
       <Flex
         gap="8px"
         justify="flex-start"
@@ -42,23 +49,34 @@ export const SubCard = ({
             style={{ marginTop: "2px" }}
           />
         )}
-        <div>
-          <Flex
-            gap="8px"
-            justify="space-between"
-            align="center"
-            direction="row"
-          >
-            <div>
-              <h3>{title}</h3>
-              {!!alert.length && <span className={styles.alert}>{alert}</span>}
-              <div className={styles.description}>{description}</div>
-            </div>
-            <Button rightSection={<ArrowRight size={16} color="#fff" />}>
-              {button}
-            </Button>
-          </Flex>
-        </div>
+        <Flex
+          gap="8px"
+          justify="space-between"
+          align="center"
+          direction="row"
+          className={styles.content}
+        >
+          <div>
+            <h3>{title}</h3>
+            {!!alert && <span className={styles.alert}>{alert}</span>}
+            <div className={styles.description}>{description}</div>
+            {!!alertSecondary && (
+              <Flex
+                gap="8px"
+                justify="flex-start"
+                align="flex-start"
+                direction="row"
+                className={styles.alertSecondary}
+              >
+                <Info size={16} color="#276EF1" style={{ marginTop: "2px" }} />{" "}
+                {alertSecondary}
+              </Flex>
+            )}
+          </div>
+          <Button rightSection={<ArrowRight size={16} color="#fff" />}>
+            {button}
+          </Button>
+        </Flex>
       </Flex>
     </div>
   );

@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Flex, Progress } from "@mantine/core";
-import { UserCircleGear } from "@phosphor-icons/react";
+import { UserCircleGear, Gear, ListChecks } from "@phosphor-icons/react";
 import { SubCard, SubCardProps } from "../SubCard";
 import styles from "./style.module.css";
 
@@ -7,14 +8,44 @@ export interface CardProps {
   title: string;
   description: string;
   progress: number;
+  type: 'user' | 'config' | 'todo',
   subCardsData: SubCardProps[];
 }
 
 const arrowIcon = "\u276E";
 
-export const Card = ({ title, description, progress, subCardsData }: CardProps) => {
+export const Card = ({
+  title,
+  description,
+  progress,
+  type,
+  subCardsData,
+}: CardProps) => {
+  
+  // Check completed amount count
+  function countCompletedItems(items: SubCardProps[]) {
+    return items.filter((item: SubCardProps) => item.completed).length;
+  }
+
+  // Main title icon selector
+  function titleIcon(){
+    if (type === 'user'){
+      return (<UserCircleGear size={32} color="#4299E1" weight="duotone" />);
+    } else if (type === 'config'){
+      return (<Gear size={32} color="#4299E1" weight="duotone" />);
+    } else if(type === 'todo') {
+      return (<ListChecks size={32} color="#4299E1" weight="duotone" />);
+    }
+  }
+
+  const [ completed ] = useState(countCompletedItems(subCardsData))
+
   return (
-    <div className={styles.container}>
+    <div
+      className={
+        subCardsData.length > 0 ? styles.container : styles.containerNoSubCard
+      }
+    >
       <Flex
         gap="16px"
         justify="space-between"
@@ -24,7 +55,7 @@ export const Card = ({ title, description, progress, subCardsData }: CardProps) 
         className={styles.header}
       >
         <Flex justify="flex-start" gap={8}>
-          <UserCircleGear size={32} color="#4299E1" weight="duotone" />
+          {titleIcon()}
           <h2>{title}</h2>
         </Flex>
         <div>
@@ -37,7 +68,7 @@ export const Card = ({ title, description, progress, subCardsData }: CardProps) 
             <div style={{ width: "60px" }}>
               <Progress color="#38C97C" size="sm" value={progress} />
             </div>
-            <div>1/2ステップ</div>
+            <div>{completed}/{subCardsData.length} ステップ</div>
             <button role="button" className={styles.arrow}>
               {arrowIcon}
             </button>
