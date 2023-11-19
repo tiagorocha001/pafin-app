@@ -1,0 +1,22 @@
+.container {
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #DEE1E3;
+}
+
+.header {
+    margin-bottom: 16px;
+}
+
+.alert {
+    border-radius: 8px;
+    padding: 0 8px;
+    background-color: #F1F5FE;
+    color: #1E54B7;
+    font-size: 12px;
+}
+
+.description {
+    margin-bottom: 32px;
+}   
+

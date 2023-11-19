@@ -13,11 +13,28 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: #eef4fa;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #596269;
+}
+
+h1, h2, h3 {
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 600;
 }
 
 h1 {
-  font-family: "Noto Sans JP", sans-serif;
-  font-weight: 600;
+  font-size: 32px;
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 20px;
 }
 
 .main {
