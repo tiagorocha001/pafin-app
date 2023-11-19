@@ -1,5 +1,6 @@
 import { Container, Flex } from "@mantine/core";
 import { Card, CardProps } from "../components/Card";
+import { Alert } from "../components/Alert";
 
 const cardData1: CardProps = {
   title: "取引の情報を入力しましょう",
@@ -66,6 +67,17 @@ const cardData3: CardProps = {
   subCardsData: [],
 };
 
+const alerts = [
+    {
+        title: '年度初めの残高入力',
+        description: '過去の計算結果を引き継いで計算する場合はこちらをクリックしてください。'
+    },
+    {
+        title: '帳簿設定',
+        description: '計算方法 (総平均法、移動平均法)、会計通貨、データ確定に関する設定の変更ができます。'
+    }
+]
+
 export const Home = () => {
   return (
     <Container size="90%" className="main">
@@ -102,7 +114,12 @@ export const Home = () => {
             type={cardData3.type}
           />
         </div>
-        <div className="right-panel">2</div>
+        <div className="right-panel">
+            <h5>クイックアクセス</h5>
+            {alerts.length > 0 && (
+                alerts.map((item) => <Alert {...item} />)
+            )}
+        </div>
       </Flex>
     </Container>
   );

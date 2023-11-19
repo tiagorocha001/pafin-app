@@ -1,0 +1,11 @@
+.container {
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #D9EBF9;
+  margin-bottom: 16px;
+  background-color: #f6f9fc;
+}
+
+.description {
+  font-size: 12px;
+}

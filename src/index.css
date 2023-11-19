@@ -19,9 +19,9 @@ body {
   color: #596269;
 }
 
-h1, h2, h3 {
-    font-family: "Noto Sans JP", sans-serif;
+h1, h2, h3, h4, h5 {
     font-weight: 600;
+    color: #2E3F51;
 }
 
 h1 {
@@ -34,7 +34,17 @@ h2 {
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+h5 {
+  font-size: 12px;
   margin-bottom: 8px;
 }
 
