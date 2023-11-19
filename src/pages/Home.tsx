@@ -7,6 +7,7 @@ const cardData1: CardProps = {
   description: "仮想通貨の損益計算には過去すべての取引履歴が必要になります。",
   progress: 50,
   type: "user",
+  expanded: true,
   subCardsData: [
     {
       title: "取引所 / ブロックチェーンを選択しましょう",
@@ -34,6 +35,7 @@ const cardData2: CardProps = {
   description: "情報が不足していると計算が完了しません。必ず追加してください。",
   progress: 0,
   type: "config",
+  expanded: true,
   subCardsData: [
     {
       title: "DeFi取引における「要識別」を解消しましょう",
@@ -64,7 +66,27 @@ const cardData3: CardProps = {
     "計算結果の最終的なチェックを行って確定申告に必要な情報を確認しましょう。最後にデータをダウンロードできます。",
   progress: 0,
   type: "todo",
-  subCardsData: [],
+  expanded: false,
+  subCardsData: [
+    {
+      title: "取引所 / ブロックチェーンを選択しましょう",
+      alert: "13 取引所/ブロックチェーン選択済み",
+      description:
+        "取引をしたことのある取引所 / ブロックチェーンをすべて選択してください。対応していない取引所や取引所外での取引経験がある場合は「カスタム」を選択してください。",
+      active: true,
+      button: "選択する",
+      completed: true,
+    },
+    {
+      title: "取引履歴を反映させましょう",
+      alert: "",
+      description:
+        "ファイルやAPI連携で履歴を反映させることができます。DeFiの取引はウォレットアドレスを入力することで取引内容まで自動識別することができます。",
+      active: true,
+      button: "追加する",
+      completed: false,
+    },
+  ],
 };
 
 const alerts = [
@@ -93,25 +115,13 @@ export const Home = () => {
         </div>
         <div className="left-panel">
           <Card
-            title={cardData1.title}
-            description={cardData1.description}
-            progress={cardData1.progress}
-            subCardsData={cardData1.subCardsData}
-            type={cardData1.type}
+            {...cardData1}
           />
           <Card
-            title={cardData2.title}
-            description={cardData2.description}
-            progress={cardData2.progress}
-            subCardsData={cardData2.subCardsData}
-            type={cardData2.type}
+            {...cardData2}
           />
           <Card
-            title={cardData3.title}
-            description={cardData3.description}
-            progress={cardData3.progress}
-            subCardsData={cardData3.subCardsData}
-            type={cardData3.type}
+            {...cardData3}
           />
         </div>
         <div className="right-panel">

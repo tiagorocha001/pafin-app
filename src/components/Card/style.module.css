@@ -25,7 +25,8 @@
     color: #8C959D;
 }
 
-.arrow {
+.arrowUp {
+    cursor: pointer;
     padding: 0;
     border: 0;
     background-color: transparent;
@@ -34,7 +35,25 @@
     transition: transform 0.3s ease-in-out;
 }
 
+.arrowDown {
+    cursor: pointer;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    color: #8C959D;
+    transform: rotate(270deg);
+    transition: transform 0.3s ease-in-out;
+}
+
 .description {
     margin-bottom: 32px;
 }   
+
+.open {
+    display: block;
+}
+
+.close {
+    display: none;
+}
 

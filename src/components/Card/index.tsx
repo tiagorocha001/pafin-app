@@ -9,6 +9,7 @@ export interface CardProps {
   description: string;
   progress: number;
   type: 'user' | 'config' | 'todo',
+  expanded: boolean,
   subCardsData: SubCardProps[];
 }
 
@@ -19,8 +20,11 @@ export const Card = ({
   description,
   progress,
   type,
+  expanded,
   subCardsData,
 }: CardProps) => {
+
+  const [ isOpened, setIsOpened ] = useState(expanded);
   
   // Check completed amount count
   function countCompletedItems(items: SubCardProps[]) {
@@ -69,15 +73,17 @@ export const Card = ({
               <Progress color="#38C97C" size="sm" value={progress} />
             </div>
             <div>{completed}/{subCardsData.length} ステップ</div>
-            <button role="button" className={styles.arrow}>
+            <button role="button" className={isOpened ? styles.arrowUp : styles.arrowDown} onClick={() => setIsOpened((prev) => !prev)}>
               {arrowIcon}
             </button>
           </Flex>
         </div>
       </Flex>
       <div className={styles.description}>{description}</div>
-      {!!subCardsData.length &&
-        subCardsData.map((item) => <SubCard key={item.title} {...item} />)}
+      <div className={isOpened ? styles.open : styles.close}>
+        {!!subCardsData.length &&
+          subCardsData.map((item) => <SubCard key={item.title} {...item} />)}
+      </div>
     </div>
   );
 };
