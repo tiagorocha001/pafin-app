@@ -1,17 +1,18 @@
 import { Flex, Progress } from "@mantine/core";
 import { UserCircleGear } from "@phosphor-icons/react";
-import { SubCard } from "../SubCard";
+import { SubCard, SubCardProps } from "../SubCard";
 import styles from "./style.module.css";
 
-interface Props {
+export interface CardProps {
   title: string;
   description: string;
   progress: number;
+  subCardsData: SubCardProps[];
 }
 
 const arrowIcon = "\u276E";
 
-export const Card = ({ title, description, progress }: Props) => {
+export const Card = ({ title, description, progress, subCardsData }: CardProps) => {
   return (
     <div className={styles.container}>
       <Flex
@@ -44,7 +45,8 @@ export const Card = ({ title, description, progress }: Props) => {
         </div>
       </Flex>
       <div className={styles.description}>{description}</div>
-      <SubCard />
+      {!!subCardsData.length &&
+        subCardsData.map((item) => <SubCard key={item.title} {...item} />)}
     </div>
   );
 };
