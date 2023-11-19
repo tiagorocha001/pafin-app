@@ -27,7 +27,7 @@ export const SubCard = ({
   completed,
 }: SubCardProps) => {
   return (
-    <div className={active ? styles.container : styles.containerInactive}>
+    <div className={active ? styles.container : styles.containerInactive} id="sub-card">
       <Flex
         gap="8px"
         justify="flex-start"
